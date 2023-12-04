@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin', function() {
+    return 'Hi Admin';
+})->middleware('role:admin');
+
+Route::get('/customer', function() {
+    return 'Hi User';
+})->middleware('role:customer');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
